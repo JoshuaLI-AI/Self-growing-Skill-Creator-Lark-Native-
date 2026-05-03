@@ -1,0 +1,86 @@
+# ASC for Lark 快速模板默认配置
+# 用于 §2.9 快速模板模式，跳过需求访谈直接使用预设配置
+
+# 技能名称（用户输入）
+skill_name: "[待用户输入]"
+
+# Wiki 空间 ID（用户输入）
+space_id: "[待用户输入]"
+
+---
+# KM 表字段定义（与标准模式一致）
+knowledge_map_fields:
+  - field_name: "节点名称"
+    type: "text"
+  - field_name: "核心规则"
+    type: "text"
+  - field_name: "关键词"
+    type: "text"
+  - field_name: "规则类型"
+    type: "select"
+    options:
+      - name: "mandatory"
+      - name: "recommended"
+      - name: "conditional"
+  - field_name: "参考来源"
+    type: "text"
+  - field_name: "红线标记"
+    type: "checkbox"
+  - field_name: "创建日期"
+    type: "datetime"
+
+---
+# EL 表固定字段定义（与标准模式一致）
+experience_log_fixed_fields:
+  - field_name: "标题"
+    type: "text"
+  - field_name: "调整逻辑"
+    type: "text"
+  - field_name: "工作文件链接"
+    type: "text"
+  - field_name: "红线标记"
+    type: "checkbox"
+  - field_name: "置信度"
+    type: "select"
+    options:
+      - name: "high"
+      - name: "medium"
+  - field_name: "来源类型"
+    type: "select"
+    options:
+      - name: "manual"
+      - name: "diff_analysis"
+  - field_name: "创建日期"
+    type: "datetime"
+
+---
+# EL 表动态字段：快速模式下不创建额外领域变量字段
+# 领域变量由 AI 在子技能运行时动态推断
+experience_log_dynamic_fields: []
+
+---
+# 通用领域变量占位符（写入子技能 SKILL.md）
+domain_variables_placeholder:
+  - name: "业务场景"
+    type: "text"
+    hint: "从用户指令中推断当前业务场景和上下文"
+    el_field: null
+
+---
+# 技能介绍文档模板（快速模式通用版）
+skill_intro_template: |
+  # {skill_name} 技能介绍
+  
+  ## 概述
+  本技能基于飞书知识库构建，能够从结构化知识和历史经验中提供专业建议。
+  
+  ## 能力范围
+  - 基于知识库规则提供建议和审核
+  - 根据历史经验优化决策方案
+  - 自动识别并提醒关键风险点
+  
+  ## 使用方式
+  直接描述你的需求，技能会自动检索相关知识和经验给出建议。
+  
+  ---
+  *由 ASC for Lark 快速模板模式自动生成。可通过重新运行 Stage 1 标准模式进行定制。*
